@@ -5,13 +5,13 @@ import Image from 'next/image';
 
 const About = () => {
   return (
-    <section className="bg-white py-16 sm:py-20 md:py-24 lg:py-32">
+    <section className="bg-white py-2 sm:py-2 md:py-2 lg:py-3">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           
           {/* Left Side - Image */}
           <div className="relative order-2 lg:order-1">
-            <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-lg overflow-hidden shadow-lg">
+            <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[500px] overflow-hidden shadow-lg">
               <Image
                 src="/images/Homepage/About.png"
                 alt="Inticede team member presenting intimate apparel solutions"

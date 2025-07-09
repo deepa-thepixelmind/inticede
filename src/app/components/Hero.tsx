@@ -7,7 +7,7 @@ const HeroSection = () => {
   return (
     <section className="relative w-full min-h-screen bg-gray-50">
       {/* Hero Image Container */}
-      <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[500px] xl:h-[600px] overflow-hidden">
+      <div className="relative w-full h-70 sm:h-100 md:h-96 lg:h-[800px] xl:h-[1100px] overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-10"></div>
         <Image

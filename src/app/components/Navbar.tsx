@@ -15,47 +15,35 @@ const Navbar = () => {
     { name: 'About Us', href: '#about' },
     { name: 'Services', href: '#services' },
     { name: 'Products', href: '#products' },
-    { name: 'Clients', href: '#clients' }
+    { name: 'Clients', href: '#Clients' }
+
   ];
 
   const rightNavItems = [
     { name: 'Network', href: '#network' },
     { name: 'Events', href: '#events' },
     { name: 'Connect', href: '#connect' },
-    { name: 'Careers', href: '#careers' }
+    { name: 'Careers', href: '#Careers' }
   ];
 
   const allNavItems = [...leftNavItems, ...rightNavItems];
 
   return (
-    <nav className="bg-white shadow-sm border-b border-gray-200">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex items-center justify-between h-20 px-4 sm:px-6 lg:px-8">
-          {/* Left Navigation - Desktop */}
-          <div className="hidden lg:flex items-center space-x-6">
+    <nav className="bg-white  shadow-sm border-b border-gray-200">
+      <div className="w-full">
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex items-center justify-between h-20 px-10">
+          {/* Left Navigation */}
+          <div className="flex items-center space-x-8">
             {leftNavItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap"
+                className="text-blue-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap"
               >
                 {item.name}
               </a>
             ))}
-          </div>
-
-          {/* Mobile menu button - Left side on mobile */}
-          <div className="lg:hidden">
-            <button
-              onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
-            >
-              {isMenuOpen ? (
-                <X className="block h-6 w-6" />
-              ) : (
-                <Menu className="block h-6 w-6" />
-              )}
-            </button>
           </div>
 
           {/* Logo - Center */}
@@ -70,21 +58,48 @@ const Navbar = () => {
             />
           </div>
 
-          {/* Right Navigation - Desktop */}
-          <div className="hidden lg:flex items-center space-x-6">
+          {/* Right Navigation */}
+          <div className="flex items-center space-x-8">
             {rightNavItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap"
+                className="text-blue-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap"
               >
                 {item.name}
               </a>
             ))}
           </div>
+        </div>
 
-          {/* Placeholder for mobile to maintain center alignment */}
-          <div className="lg:hidden w-10"></div>
+        {/* Mobile Navigation */}
+        <div className="lg:hidden flex items-center justify-between h-20 px-4 sm:px-6">
+          {/* Mobile menu button */}
+          <button
+            onClick={toggleMenu}
+            className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+          >
+            {isMenuOpen ? (
+              <X className="block h-6 w-6" />
+            ) : (
+              <Menu className="block h-6 w-6" />
+            )}
+          </button>
+
+          {/* Logo - Center */}
+          <div className="flex items-center justify-center flex-shrink-0">
+            <Image 
+              src="/images/Homepage/logo.png" 
+              alt="Inticede Logo" 
+              width={174}
+              height={70}
+              className="w-auto h-[70px] max-w-none"
+              priority
+            />
+          </div>
+
+          {/* Placeholder for alignment */}
+          <div className="w-10"></div>
         </div>
       </div>
 
