@@ -2,122 +2,57 @@
 import React from 'react';
 import Image from 'next/image';
 
-const BrandLogosViewport = () => {
-  const brandLogos = [
-    {
-      id: 1,
-      name: "Naked",
-      src: "/images/Homepage/View1.jpg",
-      alt: "Naked Brand Logo"
-    },
-    {
-      id: 2,
-      name: "Clovis",
-      src: "/images/Homepage/View2.jpg",
-      alt: "Clovis Brand Logo"
-    },
-    {
-      id: 3,
-      name: "Enamor",
-      src: "/images/Homepage/View3.jpg",
-      alt: "Enamor Brand Logo"
-    },
-    {
-      id: 4,
-      name: "Jockey",
-      src: "/images/Homepage/View4.png",
-      alt: "Jockey Brand Logo"
-    },
-    {
-      id: 5,
-      name: "Zivame",
-      src: "/images/Homepage/View5.jpg",
-      alt: "Zivame Brand Logo"
-    }
-  ];
+const brandLogos = [
+  {
+    id: 1,
+    src: "/images/Homepage/View1.jpg",
+    alt: "Naked Brand Logo"
+  },
+  {
+    id: 2,
+  
+    src: "/images/Homepage/View2.jpg",
+    alt: "Clovis Brand Logo"
+  },
+  {
+    id: 3,
+    src: "/images/Homepage/View3.jpg",
+    alt: "Enamor Brand Logo"
+  },
+  {
+    id: 4,
+    src: "/images/Homepage/View4.png",
+    alt: "Jockey Brand Logo"
+  },
+  {
+    id: 5,
+    src: "/images/Homepage/View5.jpg",
+    alt: "Zivame Brand Logo"
+  }
+];
 
+const BrandLogosViewport = () => {
   return (
-    <section className="relative w-full bg-white py-4 sm:py-6 md:py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Viewport Container */}
-        <div 
-          className="relative mx-auto bg-white border-2 rounded-lg p-4 sm:p-6 md:p-8 w-full max-w-[1300px] min-h-[150px] opacity-100"
-        >
-          {/* Brand Logos Container - Single Line */}
-          <div className="flex justify-center items-center gap-2 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-10 ">
-            {brandLogos.map((brand) => (
-              <div
-                key={brand.id}
-                className="flex-shrink-0 flex items-center justify-center"
-                style={{
-                  width: '180px',
-                  height: '100px',
-                  minWidth: '150px',
-                  minHeight: '80px'
-                }}
-              >
+    <section className="w-full bg-white py-0 sm:py-2 md:py-2">
+      <div className="max-w-12xl px-9 sm:px-10 lg:px-9">
+        <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12">
+          {brandLogos.map((brand) => (
+            <div
+              key={brand.id}
+              className="flex flex-col items-center text-center w-[220px] sm:w-[230px] md:w-[240px] lg:w-[250px]"
+            >
+              <div className="w-full h-auto">
                 <Image
                   src={brand.src}
                   alt={brand.alt}
-                  width={300}
-                  height={120}
-                  className="w-full h-full object-contain transition-all duration-300 hover:scale-105"
-                  style={{
-                    maxWidth: '100%',
-                    maxHeight: '100%',
-                    width: 'auto',
-                    height: 'auto'
-                  }}
+                  width={180}
+                  height={100}
+                  className="object-contain w-full h-auto"
                 />
               </div>
-            ))}
-          </div>
-          
-          {/* Responsive adjustments for smaller screens */}
-          <style jsx>{`
-            @media (max-width: 640px) {
-              .flex-shrink-0 {
-                width: 120px !important;
-                height: 70px !important;
-                min-width: 100px !important;
-                min-height: 60px !important;
-              }
-            }
-            
-            @media (min-width: 641px) and (max-width: 768px) {
-              .flex-shrink-0 {
-                width: 140px !important;
-                height: 80px !important;
-                min-width: 120px !important;
-                min-height: 70px !important;
-              }
-            }
-            
-            @media (min-width: 769px) and (max-width: 1024px) {
-              .flex-shrink-0 {
-                width: 160px !important;
-                height: 90px !important;
-                min-width: 140px !important;
-                min-height: 75px !important;
-              }
-            }
-            
-            @media (min-width: 1025px) {
-              .flex-shrink-0 {
-                width: 200px !important;
-                height: 110px !important;
-                min-width: 180px !important;
-                min-height: 90px !important;
-              }
-            }
-          `}</style>
-        </div>
-        
-        {/* Optional: Section Title */}
-        <div className="text-center mt-8 sm:mt-12">
-          <h3 className="text-gray-600 text-sm sm:text-base md:text-lg font-medium tracking-wider uppercase">
-           
-          </h3>
+              <p className="mt-7 text-sm sm:text-base font-bold text-black">{brand.name}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 const About = () => {
   return (
-    <section className="bg-white py-2 sm:py-2 md:py-2 lg:py-3">
+    <section className="bg-white py-1 sm:py-1 md:py-1 lg:py-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           

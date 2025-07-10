@@ -7,7 +7,7 @@ const HeroSection = () => {
   return (
     <section className="relative w-full min-h-screen bg-gray-50">
       {/* Hero Image Container */}
-      <div className="relative w-full h-70 sm:h-100 md:h-96 lg:h-[800px] xl:h-[1100px] overflow-hidden">
+      <div className="relative w-full h-50 sm:h-80 md:h-80 lg:h-[550px] xl:h-[550px] overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-10"></div>
         <Image
@@ -29,7 +29,7 @@ const HeroSection = () => {
       </div>
 
       {/* Content Section */}
-      <div className="relative z-30 bg-white py-12 sm:py-16 md:py-20 lg:py-24">
+      <div className="relative z-30 bg-white py-3 sm:py-6 md:py-10 lg:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             {/* Main Heading */}

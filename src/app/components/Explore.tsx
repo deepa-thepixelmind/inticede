@@ -37,7 +37,7 @@ const RawMaterialSection = () => {
           </div>
 
           {/* Image Section */}
-          <div className="relative w-[565px] h-[565px] mx-auto">
+          <div className="relative w-[565px] h-[565px]">
             <Image
               src="/images/Homepage/Explore.jpg" // Update with your path
               alt="Raw Material Display"

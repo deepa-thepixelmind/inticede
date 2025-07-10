@@ -10,13 +10,11 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Split navigation items for left and right sides
   const leftNavItems = [
     { name: 'About Us', href: '#about' },
     { name: 'Services', href: '#services' },
     { name: 'Products', href: '#products' },
     { name: 'Clients', href: '#Clients' }
-
   ];
 
   const rightNavItems = [
@@ -29,7 +27,7 @@ const Navbar = () => {
   const allNavItems = [...leftNavItems, ...rightNavItems];
 
   return (
-    <nav className="bg-white  shadow-sm border-b border-gray-200">
+    <nav className="bg-white shadow-sm border-b border-gray-200">
       <div className="w-full">
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center justify-between h-20 px-10">
@@ -39,7 +37,7 @@ const Navbar = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-blue-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap"
+                className="text-blue-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap font-grown"
               >
                 {item.name}
               </a>
@@ -48,9 +46,9 @@ const Navbar = () => {
 
           {/* Logo - Center */}
           <div className="flex items-center justify-center flex-shrink-0">
-            <Image 
-              src="/images/Homepage/logo.png" 
-              alt="Inticede Logo" 
+            <Image
+              src="/images/Homepage/logo.png"
+              alt="Inticede Logo"
               width={174}
               height={70}
               className="w-auto h-[70px] max-w-none"
@@ -64,7 +62,7 @@ const Navbar = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-blue-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap"
+                className="text-blue-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap font-grown"
               >
                 {item.name}
               </a>
@@ -73,24 +71,12 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className="lg:hidden flex items-center justify-between h-20 px-4 sm:px-6">
-          {/* Mobile menu button */}
-          <button
-            onClick={toggleMenu}
-            className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
-          >
-            {isMenuOpen ? (
-              <X className="block h-6 w-6" />
-            ) : (
-              <Menu className="block h-6 w-6" />
-            )}
-          </button>
-
+        <div className="lg:hidden flex items-center justify-between h-20 px-4 sm:px-6 relative">
           {/* Logo - Center */}
-          <div className="flex items-center justify-center flex-shrink-0">
-            <Image 
-              src="/images/Homepage/logo.png" 
-              alt="Inticede Logo" 
+          <div className="absolute left-1/2 transform -translate-x-1/2">
+            <Image
+              src="/images/Homepage/logo.png"
+              alt="Inticede Logo"
               width={174}
               height={70}
               className="w-auto h-[70px] max-w-none"
@@ -98,26 +84,33 @@ const Navbar = () => {
             />
           </div>
 
-          {/* Placeholder for alignment */}
-          <div className="w-10"></div>
+          {/* Hamburger Menu - Right */}
+          <button
+            onClick={toggleMenu}
+            className="ml-auto inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+          >
+            {isMenuOpen ? (
+              <X className="block h-6 w-6" />
+            ) : (
+              <Menu className="block h-6 w-6" />
+            )}
+          </button>
         </div>
       </div>
 
       {/* Mobile Navigation Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
-            {allNavItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
+        <div className="lg:hidden bg-white border-t border-gray-200 flex flex-col items-center justify-center space-y-4 py-6">
+          {allNavItems.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium transition-colors duration-200"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {item.name}
+            </a>
+          ))}
         </div>
       )}
     </nav>

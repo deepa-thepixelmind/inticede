@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const TrustedSection = () => {
   return (
-    <section className="w-full bg-white py-16 sm:py-20 md:py-24">
+    <section className="w-full bg-white py-4 sm:py-8 md:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
           {/* Left Text Section */}
@@ -22,10 +22,10 @@ const TrustedSection = () => {
           </div>
 
           {/* Right Image Section */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row mt-4 gap-4 justify-center">
             {/* First Image */}
             <div
-              className="relative grayscale border-2 border-blue-400 rounded-lg overflow-hidden"
+              className="relative grayscale border-2 border-blue-400 overflow-hidden"
               style={{ width: '368px', height: '619px' }}
             >
               <Image
@@ -38,7 +38,7 @@ const TrustedSection = () => {
 
             {/* Second Image */}
             <div
-              className="relative grayscale border-2 border-blue-400 rounded-lg overflow-hidden"
+              className="relative grayscale border-2 border-blue-400 overflow-hidden"
               style={{ width: '369px', height: '619px' }}
             >
               <Image
