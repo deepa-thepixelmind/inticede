@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   const leftNavItems = [
-    { name: 'About Us', href: '#about' },
+    { name: 'About Us', href: '/About_Us' },
     { name: 'Services', href: '#services' },
     { name: 'Products', href: '#products' },
     { name: 'Clients', href: '#Clients' }
