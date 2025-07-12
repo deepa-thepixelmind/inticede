@@ -4,9 +4,7 @@ import WhatDrivesUsSection from "./WhatDrivesUsSection";
 import PartneringAdvantagesSection from "./partnership";
 import YusufDohadwalaSection from "./YusufDohadwalaSection";
 import InticedeTeamSection from "./Teamsection";
-
-
-
+import Timeline from "./Timeline";
 
 
 export default function Home() {
@@ -17,8 +15,10 @@ export default function Home() {
     <OurVisionSection/>
     <WhatDrivesUsSection/>
     <PartneringAdvantagesSection/>
+    <Timeline/>
     <YusufDohadwalaSection/>
     <InticedeTeamSection/>
+
     </div>
   );
 }
