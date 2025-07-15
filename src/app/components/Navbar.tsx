@@ -11,9 +11,9 @@ const Navbar = () => {
   };
 
   const leftNavItems = [
-    { name: 'About Us', href: '/About_Us' },
-    { name: 'Services', href: '/Services' },
-    { name: 'Products', href: '#products' },
+    { name: 'About Us', href: '/about-us' },
+    { name: 'Services', href: '/services' },
+    { name: 'Products', href: '/products' },
     { name: 'Clients', href: '#Clients' }
   ];
 
@@ -27,8 +27,8 @@ const Navbar = () => {
   const allNavItems = [...leftNavItems, ...rightNavItems];
 
   return (
-    <nav className="bg-white shadow-sm border-b border-gray-200">
-      <div className="w-full">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-white/50 backdrop-blur-md shadow-sm border-b border-gray-200">
+  <div className="w-full">
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center justify-between h-20 px-10">
           {/* Left Navigation */}
@@ -71,7 +71,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className="lg:hidden flex items-center justify-between h-20 px-4 sm:px-6 relative">
+        <div className="lg:hidden flex items-center justify-between h-20 px-4 sm:px-6 relative ">
           {/* Logo - Center */}
           <div className="absolute left-1/2 transform -translate-x-1/2">
             <Image
@@ -100,7 +100,7 @@ const Navbar = () => {
 
       {/* Mobile Navigation Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-200 flex flex-col items-center justify-center space-y-4 py-6">
+        <div className="lg:hidden fixed top-20 left-0 w-full z-40 bg-white/50 backdrop-blur-md border-t border-gray-200 flex flex-col items-center justify-center space-y-4 py-6">
           {allNavItems.map((item) => (
             <a
               key={item.name}

@@ -2,30 +2,41 @@
 import React from 'react';
 import Image from 'next/image';
 
-const brandLogos = [
+type Brand = {
+  id: number;
+  name: string;
+  src: string;
+  alt: string;
+};
+
+const brandLogos: Brand[] = [
   {
     id: 1,
+    name: "Naked",
     src: "/images/Homepage/View1.jpg",
     alt: "Naked Brand Logo"
   },
   {
     id: 2,
-  
+    name: "Clovis",
     src: "/images/Homepage/View2.jpg",
     alt: "Clovis Brand Logo"
   },
   {
     id: 3,
+    name: "Enamor",
     src: "/images/Homepage/View3.jpg",
     alt: "Enamor Brand Logo"
   },
   {
     id: 4,
+    name: "Jockey",
     src: "/images/Homepage/View4.png",
     alt: "Jockey Brand Logo"
   },
   {
     id: 5,
+    name: "Zivame",
     src: "/images/Homepage/View5.jpg",
     alt: "Zivame Brand Logo"
   }
