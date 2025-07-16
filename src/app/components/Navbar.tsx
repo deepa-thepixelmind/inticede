@@ -2,45 +2,47 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const leftNavItems = [
     { name: 'About Us', href: '/about-us' },
     { name: 'Services', href: '/services' },
     { name: 'Products', href: '/products' },
-    { name: 'Clients', href: '#Clients' }
+    { name: 'Clients', href: '#Clients' },
   ];
 
   const rightNavItems = [
     { name: 'Network', href: '#network' },
     { name: 'Events', href: '#events' },
     { name: 'Connect', href: '#connect' },
-    { name: 'Careers', href: '#Careers' }
+    { name: 'Careers', href: '#Careers' },
   ];
 
   const allNavItems = [...leftNavItems, ...rightNavItems];
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-white/50 backdrop-blur-md shadow-sm border-b border-gray-200">
-  <div className="w-full">
+      <div className="w-full">
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center justify-between h-20 px-10">
           {/* Left Navigation */}
           <div className="flex items-center space-x-8">
-            {leftNavItems.map((item) => (
-              <a
+            {leftNavItems.map((item, i) => (
+              <motion.a
                 key={item.name}
                 href={item.href}
+                initial={{ opacity: 0, x: -40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
                 className="text-blue-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap font-grown"
               >
                 {item.name}
-              </a>
+              </motion.a>
             ))}
           </div>
 
@@ -58,14 +60,17 @@ const Navbar = () => {
 
           {/* Right Navigation */}
           <div className="flex items-center space-x-8">
-            {rightNavItems.map((item) => (
-              <a
+            {rightNavItems.map((item, i) => (
+              <motion.a
                 key={item.name}
                 href={item.href}
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
                 className="text-blue-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap font-grown"
               >
                 {item.name}
-              </a>
+              </motion.a>
             ))}
           </div>
         </div>
@@ -99,20 +104,32 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Navigation Menu */}
-      {isMenuOpen && (
-        <div className="lg:hidden fixed top-20 left-0 w-full z-40 bg-white/50 backdrop-blur-md border-t border-gray-200 flex flex-col items-center justify-center space-y-4 py-6">
-          {allNavItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium transition-colors duration-200"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {item.name}
-            </a>
-          ))}
-        </div>
-      )}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="lg:hidden fixed top-20 left-0 w-full z-40 bg-white/50 backdrop-blur-md border-t border-gray-200 flex flex-col items-center justify-center space-y-4 py-6"
+          >
+            {allNavItems.map((item, index) => (
+              <motion.a
+                key={item.name}
+                href={item.href}
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ delay: index * 0.05, duration: 0.4 }}
+                className="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium transition-colors duration-200"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.name}
+              </motion.a>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

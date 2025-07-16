@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
+import { motion } from 'framer-motion';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -36,12 +37,16 @@ export default function InticedeTeamSection() {
   return (
     <section className="w-full bg-gray-50 py-16 px-4">
       {/* Section Heading */}
-      <h2
+      <motion.h2
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
         className="text-center text-[#1F3A93] text-[40px] sm:text-[44px] md:text-[46px] lg:text-[48px] leading-[40.5px] font-normal mb-12"
         style={{ fontFamily: 'Grown Personal Use Only' }}
       >
         INTICEDE TEAM
-      </h2>
+      </motion.h2>
 
       <div className="max-w-6xl mx-auto relative">
         <Swiper
@@ -49,56 +54,70 @@ export default function InticedeTeamSection() {
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           loop={true}
           slidesPerView={1}
-          pagination={{ clickable: true }}
-          className="pb-12" // give space for pagination
+          pagination={{ clickable: true, el: '.custom-team-pagination' }}
         >
           {teamMembers.map((member, index) => (
             <SwiperSlide key={index}>
               <div className="flex flex-col lg:flex-row items-center justify-center gap-10">
                 {/* Image */}
-                <div className="relative w-[300px] sm:w-[360px] lg:w-[402px] h-[489px] shrink-0">
+                <motion.div
+                  initial={{ opacity: 0, x: -60 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                  className="relative w-[300px] sm:w-[360px] lg:w-[402px] h-[489px] shrink-0"
+                >
                   <Image
                     src={member.image}
                     alt={member.name}
                     fill
                     className="object-cover grayscale"
                   />
-                </div>
+                </motion.div>
 
                 {/* Text */}
                 <div className="max-w-xl text-left mt-6 lg:mt-0">
-                  <h3
+                  <motion.h3
+                    initial={{ opacity: 0, x: 40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    viewport={{ once: true }}
                     className="text-[#1F3A93] text-[28px] sm:text-[32px] lg:text-[35px] leading-[40.5px] mb-4"
                     style={{ fontFamily: 'Grown Personal Use Only' }}
                   >
                     {member.name}
-                  </h3>
-                  <p
+                  </motion.h3>
+                  <motion.p
+                    initial={{ opacity: 0, x: 40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    viewport={{ once: true }}
                     className="text-[16px] leading-[18.5px] text-gray-800 font-normal whitespace-pre-line"
                     style={{ fontFamily: 'Montserrat' }}
                   >
                     {member.bio}
-                  </p>
+                  </motion.p>
                 </div>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
 
-        {/* Pagination styling */}
+        {/* Custom Pagination below the image+text and centered */}
+        <div className="custom-team-pagination mt-8 flex justify-center gap-2"></div>
+
+        {/* Pagination Styling */}
         <style jsx global>{`
-          .swiper-pagination-bullets {
-            bottom: 0 !important;
-            display: flex;
-            justify-content: center;
-            margin-top: 1rem;
-          }
-          .swiper-pagination-bullet {
-            background-color: #999 !important; /* Grayscale dot */
+          .custom-team-pagination .swiper-pagination-bullet {
+            background-color: #999 !important;
             opacity: 1 !important;
+            width: 10px;
+            height: 10px;
+            border-radius: 9999px;
+            transition: background-color 0.3s ease;
           }
-          .swiper-pagination-bullet-active {
-            background-color: #333 !important; /* Darker gray for active */
+          .custom-team-pagination .swiper-pagination-bullet-active {
+            background-color: #333 !important;
           }
         `}</style>
       </div>

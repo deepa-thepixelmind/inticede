@@ -2,32 +2,48 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function YusufDohadwalaSection() {
   return (
     <section className="w-full bg-white py-20 px-4">
       {/* Heading */}
-      <h2
+      <motion.h2
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
         className="text-[#1F3A93] text-[40px] sm:text-[44px] md:text-[46px] lg:text-[48px] leading-[40.5px] font-normal text-center mb-12"
         style={{ fontFamily: 'Grown Personal Use Only' }}
       >
         Yusuf Dohadwala
-      </h2>
+      </motion.h2>
 
       {/* Image + Text layout */}
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-10">
         {/* Left Image */}
-        <div className="relative w-[354px] h-[480px] shrink-0">
+        <motion.div
+          initial={{ opacity: 0, x: -80 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="relative w-[354px] h-[480px] shrink-0"
+        >
           <Image
-            src="/images/about-us/yusuf.png" // Update path if needed
+            src="/images/about-us/yusuf.png"
             alt="Yusuf Dohadwala"
             fill
             className="object-cover grayscale"
           />
-        </div>
+        </motion.div>
 
         {/* Right Text */}
-        <div className="max-w-2xl text-left text-[16px] leading-[18.5px] text-gray-800"
+        <motion.div
+          initial={{ opacity: 0, x: 80 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="max-w-2xl text-left text-[16px] leading-[18.5px] text-gray-800"
           style={{ fontFamily: 'Montserrat Alternates' }}
         >
           <p className="mb-3">
@@ -45,7 +61,7 @@ export default function YusufDohadwalaSection() {
           <p>
             Under Yusuf’s guidance, Inticede has become India’s first and leading buying, sourcing, and design house dedicated to intimatewear — servicing 100+ brands and managing 200+ vendor partnerships globally.
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

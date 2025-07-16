@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const features = [
   {
@@ -30,20 +31,30 @@ export default function PartneringAdvantagesSection() {
   return (
     <section className="w-full bg-white py-16 px-4 text-center">
       {/* Heading */}
-      <div className="max-w-[1206px] mx-auto px-4">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        className="max-w-[1206px] mx-auto px-4"
+      >
         <h2
           className="text-[#1F3A93] text-[40px] sm:text-[44px] md:text-[48px] lg:text-[50px] leading-[48.5px] font-normal mb-14"
           style={{ fontFamily: 'Grown Personal Use Only' }}
         >
           The unique advantages of partnering with Inticede
         </h2>
-      </div>
+      </motion.div>
 
       {/* Cards */}
       <div className="flex flex-col lg:flex-row justify-center items-start gap-12 flex-wrap max-w-[1206px] mx-auto">
         {features.map((feature, index) => (
-          <div
+          <motion.div
             key={index}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: index * 0.2 }}
+            viewport={{ once: true }}
             className="w-full sm:w-[354px] flex flex-col items-center text-center mx-auto"
           >
             {/* Image */}
@@ -71,7 +82,7 @@ export default function PartneringAdvantagesSection() {
             >
               {feature.description}
             </p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

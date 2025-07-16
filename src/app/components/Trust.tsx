@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const TrustedSection = () => {
   return (
@@ -8,7 +9,13 @@ const TrustedSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
           {/* Left Text Section */}
-          <div className="flex flex-col justify-end h-full">
+          <motion.div
+            className="flex flex-col justify-end h-full"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             <div className="mb-4 sm:mb-6 md:mb-10">
               <h2 className="text-3xl sm:text-4xl font-semibold text-[#1F3A93] mb-4">
                 Trusted by
@@ -19,35 +26,43 @@ const TrustedSection = () => {
                 in the intimate apparel space.
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Image Section */}
           <div className="flex flex-col sm:flex-row mt-4 gap-4 justify-center">
             {/* First Image */}
-            <div
+            <motion.div
               className="relative grayscale border-2 border-blue-400 overflow-hidden"
               style={{ width: '368px', height: '619px' }}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              viewport={{ once: true }}
             >
               <Image
-                src="/images/Homepage/Trust1.jpg" // replace with your actual path
+                src="/images/Homepage/Trust1.jpg"
                 alt="Jockey Store"
                 fill
                 className="object-cover"
               />
-            </div>
+            </motion.div>
 
             {/* Second Image */}
-            <div
+            <motion.div
               className="relative grayscale border-2 border-blue-400 overflow-hidden"
               style={{ width: '369px', height: '619px' }}
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              viewport={{ once: true }}
             >
               <Image
-                src="/images/Homepage/Trust2.png" // replace with your actual path
+                src="/images/Homepage/Trust2.png"
                 alt="Nykaa Display"
                 fill
                 className="object-cover"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

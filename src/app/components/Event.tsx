@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const events = [
   { id: 1, title: 'Intimasia Kochi 2018', src: '/images/Homepage/Event1.jpg' },
@@ -14,7 +15,16 @@ const events = [
 const EventsSection = () => {
   return (
     <section className="w-full bg-[#F2F2F2] py-16 sm:py-20 md:py-24 text-center relative overflow-hidden">
-      <h2 className="text-[#1F3A93] text-3xl sm:text-4xl font-semibold mb-12">Events</h2>
+      {/* Animated Heading */}
+      <motion.h2
+        className="text-[#1F3A93] text-3xl sm:text-4xl font-semibold mb-12"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        Events
+      </motion.h2>
 
       {/* Arcs */}
       <div className="relative max-w-max mx-auto">
@@ -45,8 +55,15 @@ const EventsSection = () => {
         {/* Event Grid */}
         <div className="bg-white px-4 py-6 sm:px-6 sm:py-10 rounded shadow-md inline-block relative z-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-10">
-            {events.map((event) => (
-              <div key={event.id} className="flex flex-col items-center">
+            {events.map((event, index) => (
+              <motion.div
+                key={event.id}
+                className="flex flex-col items-center"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
                 <div className="relative grayscale overflow-hidden rounded-md w-[278px] h-[258px] z-10">
                   <Image
                     src={event.src}
@@ -56,7 +73,7 @@ const EventsSection = () => {
                   />
                 </div>
                 <p className="mt-2 text-xs text-[#1F3A93]">{event.title}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

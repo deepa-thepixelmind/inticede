@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function Footer() {
   return (
@@ -7,7 +8,12 @@ export default function Footer() {
       {/* Logo & Form Section */}
       <div className="relative grid grid-cols-1 lg:grid-cols-2 mt-10 gap-8">
         {/* Logo & Description */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
           <Image
             src="/images/Homepage/logo.png"
             alt="INTICEDE Logo"
@@ -23,13 +29,18 @@ export default function Footer() {
             <br />
             Empowering brands to build better, smarter and faster....
           </p>
-        </div>
+        </motion.div>
 
         {/* Form */}
-        <div className="flex flex-col relative lg:ml-12">
+        <motion.div
+          className="flex flex-col relative lg:ml-12"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
           <h3 className="text-2xl font-semibold mb-6">Partner Enquiry Form</h3>
           <form className="space-y-6">
-            {/* First Name */}
             <div>
               <label htmlFor="firstName" className="block text-sm font-medium text-[#1F3A93] mb-1">
                 First name
@@ -42,7 +53,6 @@ export default function Footer() {
               />
             </div>
 
-            {/* Email ID */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-[#1F3A93] mb-1">
                 Email ID
@@ -55,7 +65,6 @@ export default function Footer() {
               />
             </div>
 
-            {/* Send Button */}
             <div>
               <button
                 type="submit"
@@ -66,29 +75,38 @@ export default function Footer() {
             </div>
           </form>
 
-          {/* Social Icons as Images */}
-          <div className="absolute right-[-50px] bottom-0 flex flex-col gap-1 items-center">
-            <Image
-              src="/images/Homepage/facebook.png"
-              alt="Facebook"
-              width={37}
-              height={37}
-              className="rounded-full"
-            />
-            <Image
-              src="/images/Homepage/Linkdin.png"
-              alt="LinkedIn"
-              width={37}
-              height={37}
-            />
-            <Image
-              src="/images/Homepage/insta.png"
-              alt="Instagram"
-              width={37}
-              height={37}
-            />
-          </div>
-        </div>
+          {/* Social Icons with Animation */}
+          <motion.div
+            className="absolute right-[-50px] bottom-0 flex flex-col gap-1 items-center"
+            initial="hidden"
+            whileInView="visible"
+            transition={{ staggerChildren: 0.2, delayChildren: 0.6 }}
+            variants={{
+              visible: { transition: { staggerChildren: 0.2 } },
+              hidden: {},
+            }}
+            viewport={{ once: true }}
+          >
+            {['facebook.png', 'Linkdin.png', 'insta.png'].map((icon, i) => (
+              <motion.div
+                key={i}
+                variants={{
+                  hidden: { opacity: 0, x: 20 },
+                  visible: { opacity: 1, x: 0 },
+                }}
+                transition={{ duration: 0.5 }}
+              >
+                <Image
+                  src={`/images/Homepage/${icon}`}
+                  alt={icon.split('.')[0]}
+                  width={37}
+                  height={37}
+                  className="rounded-full"
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

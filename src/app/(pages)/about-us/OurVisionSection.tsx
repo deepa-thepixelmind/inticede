@@ -9,6 +9,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { motion } from 'framer-motion';
 
 const images = [
   '/images/about-us/slide1.png',
@@ -23,7 +24,13 @@ export default function OurVisionSection() {
   return (
     <section className="w-full bg-white text-center">
       {/* Text Content */}
-      <div className="px-4 py-16">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        className="px-4 py-16"
+      >
         <h2
           className="text-[32px] sm:text-[40px] md:text-[48px] font-semibold leading-tight text-[#1F3A93] max-w-4xl mx-auto"
           style={{ fontFamily: 'Grown Personal Use Only' }}
@@ -37,10 +44,16 @@ export default function OurVisionSection() {
           We’re the force behind your brand, managing the complexities — from technical fittings to global sourcing — so you can focus on imagining freely, creating boldly, and building beautifully. <br />
           Because every vision deserves to rise—with clarity, confidence, and ease.
         </p>
-      </div>
+      </motion.div>
 
       {/* Swiper Slider */}
-      <div className="-mx-4 relative">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 0.3 }}
+        viewport={{ once: true }}
+        className="-mx-4 relative"
+      >
         <Swiper
           modules={[Pagination, Navigation, Autoplay]}
           spaceBetween={20}
@@ -74,7 +87,7 @@ export default function OurVisionSection() {
 
         {/* Custom Pagination Dots */}
         <div className="custom-pagination mt-4 flex justify-center gap-2"></div>
-      </div>
+      </motion.div>
 
       {/* Custom Pagination Styling */}
       <style jsx global>{`

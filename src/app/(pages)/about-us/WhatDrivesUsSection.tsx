@@ -2,22 +2,41 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function WhatDrivesUsSection() {
   return (
-    <section className="w-full bg-white py-16 px-4 flex flex-col items-center lg:flex-row lg:justify-center lg:gap-12 relative">
+    <motion.section
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: 'easeOut' }}
+      viewport={{ once: true }}
+      className="w-full bg-white py-16 px-4 flex flex-col items-center lg:flex-row lg:justify-center lg:gap-12 relative"
+    >
       {/* Left Image */}
-      <div className="w-full max-w-[736px] h-[825px] relative hidden lg:block">
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        viewport={{ once: true }}
+        className="w-full max-w-[736px] h-[825px] relative hidden lg:block"
+      >
         <Image
-          src="/images/about-us/left-image.jpg" // replace with actual image path
+          src="/images/about-us/left-image.jpg"
           alt="Left visual"
           fill
           className="object-cover"
         />
-      </div>
+      </motion.div>
 
       {/* Center Text */}
-      <div className="max-w-4xl text-center">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 0.4 }}
+        viewport={{ once: true }}
+        className="max-w-4xl text-center"
+      >
         <h2
           className="text-[#1F3A93] text-[40px] sm:text-[44px] md:text-[48px] lg:text-[50px] leading-[48.5px] font-normal mb-6"
           style={{ fontFamily: 'Grown Personal Use Only' }}
@@ -34,17 +53,23 @@ export default function WhatDrivesUsSection() {
           {'\n\n'}
           At Inticede, we are committed to delivering quality, transparency, and timely execution at every stage of development building long-term partnerships rooted in trust, collaboration, and shared success.
         </p>
-      </div>
+      </motion.div>
 
       {/* Right Image */}
-      <div className="w-full max-w-[736px] h-[825px] relative hidden lg:block">
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        viewport={{ once: true }}
+        className="w-full max-w-[736px] h-[825px] relative hidden lg:block"
+      >
         <Image
-          src="/images/about-us/right-image.jpg" 
+          src="/images/about-us/right-image.jpg"
           alt="Right visual"
           fill
           className="object-cover"
         />
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
