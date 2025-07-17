@@ -13,7 +13,7 @@ const Navbar = () => {
     { name: 'About Us', href: '/about-us' },
     { name: 'Services', href: '/services' },
     { name: 'Products', href: '/products' },
-    { name: 'Clients', href: '#Clients' },
+    { name: 'Clients', href: '/clients' },
   ];
 
   const rightNavItems = [
