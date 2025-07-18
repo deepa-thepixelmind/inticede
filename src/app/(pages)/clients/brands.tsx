@@ -54,49 +54,68 @@ const brandLogos = [
   '/images/clients/brand46.png',
   '/images/clients/brand47.png',
   '/images/clients/brand48.png',
-  
-  // Add more brand image paths here...
 ];
 
+const rowsPerColumn = 8;
+const totalSlides = Math.ceil(brandLogos.length / rowsPerColumn);
+
 export default function BrandsGridScroller() {
-    return (
-      <section className="w-full px-4 py-12 bg-white">
-        <Swiper
-          modules={[Autoplay]}
-          autoplay={{
-            delay: 0,
-            disableOnInteraction: false,
-          }}
-          speed={3000}
-          loop={true}
-          slidesPerView="auto"
-          spaceBetween={20}
-          allowTouchMove={false}
-        >
-          {/* Repeat the logos to make looping smoother */}
-          {[...brandLogos, ...brandLogos, ...brandLogos].map((src, idx) => (
-            <SwiperSlide
-              key={idx}
-              style={{ width: 'auto' }}
-              className="grid grid-rows-8 gap-4"
-            >
-              {Array.from({ length: 8 }).map((_, rowIdx) => (
+  return (
+    <section className="w-full px-4 py-12 bg-white">
+      <Swiper
+        modules={[Autoplay]}
+        autoplay={{
+          delay: 0,
+          disableOnInteraction: false,
+        }}
+        speed={3000}
+        loop={true}
+        spaceBetween={30}
+        allowTouchMove={false}
+        breakpoints={{
+          0: {
+            slidesPerView: 2, // extra small devices
+          },
+          640: {
+            slidesPerView: 3, // small devices (like phones)
+          },
+          768: {
+            slidesPerView: 5, // medium devices (tablets)
+          },
+          1024: {
+            slidesPerView: 6, // large devices (desktops)
+          },
+        }}
+      >
+        {Array.from({ length: totalSlides * 3 }).map((_, slideIdx) => (
+          <SwiperSlide
+            key={slideIdx}
+            style={{ width: 'auto' }}
+            className="grid grid-rows-8 gap-5"
+          >
+            {Array.from({ length: rowsPerColumn }).map((_, rowIdx) => {
+              const brandIndex =
+                (slideIdx % totalSlides) * rowsPerColumn + rowIdx;
+              const src =
+                brandLogos[brandIndex % brandLogos.length];
+              return (
                 <div
-                  key={`${idx}-${rowIdx}`}
-                  className="w-[120px] h-[60px] flex items-center justify-center"
+                  key={`${slideIdx}-${rowIdx}`}
+                  className="w-[160px] h-[80px] pt-1 pb-1 flex items-center justify-center"
                 >
                   <Image
                     src={src}
-                    alt={`Brand ${idx + 1} row ${rowIdx + 1}`}
-                    width={100}
-                    height={100}
+                    alt={`Brand ${brandIndex + 1}`}
+                    width={140}
+                    height={140}
                     className="object-contain w-full h-full"
                   />
                 </div>
-              ))}
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </section>
-    );
-  }
+              );
+            })}
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </section>
+  );
+}

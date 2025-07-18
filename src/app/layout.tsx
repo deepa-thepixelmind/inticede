@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import localFont from 'next/font/local';
 import Navbar  from "@/app/components/Navbar";
 import  Footer from "@/app/components/Footer";
+import { ReactLenis } from "@/app/utils/lenis";
 
 import "./globals.css";
 
@@ -35,12 +36,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <ReactLenis root>
       <body
         className={`${geistSans.variable} ${geistMono.variable}  ${grown.variable}antialiased`}
       > <Navbar/>
         {children}
         <Footer/>
       </body>
+      </ReactLenis>
     </html>
   );
 }

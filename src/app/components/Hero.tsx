@@ -1,10 +1,34 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
+import Lenis from 'lenis';
+
+function useLenisAnimation() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      // Optional: customize settings here
+     
+      lerp: 0.1,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+}
 
 const HeroSection = () => {
+  useLenisAnimation(); // Initialize Lenis animation here
+
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, margin: '-100px' });
 
