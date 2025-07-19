@@ -1,11 +1,58 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 
 export default function ImpactSection() {
+  const [count1, setCount1] = useState(0);
+  const [count2, setCount2] = useState(0);
+  const [count3, setCount3] = useState(0);
+
+  // Animate 9M+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount1((prev) => {
+        if (prev >= 9000000) {
+          clearInterval(interval);
+          return 9000000;
+        }
+        return prev + 50000;
+      });
+    }, 20);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Animate 1000+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount2((prev) => {
+        if (prev >= 1000) {
+          clearInterval(interval);
+          return 1000;
+        }
+        return prev + 20;
+      });
+    }, 10);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Animate 10M+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount3((prev) => {
+        if (prev >= 10000000) {
+          clearInterval(interval);
+          return 10000000;
+        }
+        return prev + 60000;
+      });
+    }, 20);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative w-full px-4 py-12 lg:px-16 bg-white">
       <div className="flex flex-col lg:flex-row justify-between items-stretch gap-10 min-h-[600px]">
@@ -31,21 +78,27 @@ export default function ImpactSection() {
                 <div className="text-sm text-blue-900 mb-1">
                   We have helped over a hundred ideas take flight
                 </div>
-                <div className="text-[20px] font-semibold text-blue-900">9M+</div>
+                <div className="text-[20px] font-semibold text-blue-900">
+                  {Math.floor(count1).toLocaleString()}+
+                </div>
               </div>
               <div className="text-center sm:text-left">
                 <div className="w-2 h-2 bg-blue-900 mx-auto sm:mx-0 mb-2 rounded-sm" />
                 <div className="text-sm text-blue-900 mb-1">
                   We have collaborated with brands around the world
                 </div>
-                <div className="text-[20px] font-semibold text-blue-900">1000+</div>
+                <div className="text-[20px] font-semibold text-blue-900">
+                  {count2.toLocaleString()}+
+                </div>
               </div>
               <div className="text-center sm:text-left">
                 <div className="w-2 h-2 bg-blue-900 mx-auto sm:mx-0 mb-2 rounded-sm" />
                 <div className="text-sm text-blue-900 mb-1">
                   Every product build is a dream come true
                 </div>
-                <div className="text-[20px] font-semibold text-blue-900">10M+</div>
+                <div className="text-[20px] font-semibold text-blue-900">
+                  {Math.floor(count3).toLocaleString()}+
+                </div>
               </div>
             </div>
           </div>
